@@ -12,11 +12,12 @@ GPIO.output(15, GPIO.HIGH)
 #push button
 GPIO.setup(14, GPIO.IN)
 led = False
-print('RODANDO')
+
+GPIO.output(18,GPIO.HIGH)
+
 
 while True:
-    GPIO.output(18,GPIO.LOW)
-    print("RELAY LIGADO")
+    print("RELAY DESLIGADO")
     time.sleep(0.5)
 
 def my_callback(channel):  	#manual watering
