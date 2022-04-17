@@ -1,4 +1,3 @@
-import utime
 from machine import Pin
 import time
 
@@ -7,16 +6,7 @@ green_led = Pin(13, Pin.OUT)  # GREEN LED
 sensor = Pin(27, Pin.IN, Pin.PULL_DOWN)
 pump = Pin(26, Pin.OUT)  # pump
 
-print()
-print(" YYYY MM DD HH MM SS")
-dateTime = (input("Enter current date & time: "))+' 0 0'
-synchronisedTime = utime.mktime(list(map(int, tuple(dateTime.split(' ')))))
-timeDelta = synchronisedTime - int(utime.time())
-
-
-def timeNow():
-    return utime.localtime(utime.time() + timeDelta)
-
+print("LIGANDO")
 
 def pump_on():
     red_led.value(1)
