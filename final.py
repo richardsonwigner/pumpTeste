@@ -1,56 +1,13 @@
-#!/usr/bin/python
-
-# A simple Python application for controlling a relay board from a Raspberry Pi
-# The application uses the GPIO Zero library (https://gpiozero.readthedocs.io/en/stable/)
-# The relay is connected to one of the Pi's GPIO ports, then is defined as an Output device
-# in GPIO Zero: https://gpiozero.readthedocs.io/en/stable/api_output.html#outputdevice
-
-import sys
-import time
-
-# Make sure you install required libraries:
-# https://gpiozero.readthedocs.io/en/stable/installing.html
-import gpiozero
-
-# change this value based on which GPIO port the relay is connected to
-RELAY_PIN = 18
-
-# create a relay obje
-# Triggered by the output pin going low: active_high=False.
-# Initially off: initial_value=False
-relay = gpiozero.OutputDevice(RELAY_PIN, active_high=False, initial_value=False)
-
-
-def set_relay(status):
-    if status:
-        print("Setting relay: ON")
-        relay.on()
-    else:
-        print("Setting relay: OFF")
-        relay.off()
-
-
-def toggle_relay():
-    print("toggling relay")
-    relay.toggle()
-
-
-def main_loop():
-    # start by turning the relay off
-    set_relay(False)
-    while 1:
-        # then toggle the relay every second until the app closes
-        toggle_relay()
-        # wait a second 
-        time.sleep(1)
-
-
-if __name__ == "__main__":
-    try:
-        main_loop()
-    except KeyboardInterrupt:
-        # turn the relay off
-        set_relay(False)
-        print("\nExiting application\n")
-        # exit the application
-        sys.exit(0)
+import RPi.GPIO as GPIO            # import RPi.GPIO module  
+from time import sleep             # lets us have a delay  
+GPIO.setmode(GPIO.BCM)             # choose BCM or BOARD  
+GPIO.setup(14, GPIO.OUT)           # set GPIO14 as an output     
+try:  
+    while True:
+        GPIO.input(14)          # This line looks unnecessary, what does it do? 
+        sleep(0.5)                  # wait half a second
+        GPIO.output(14, 1)  #  set GPIO14 to 1/GPIO.HIGH/True  
+    if GPIO.input(14):         # If GPIO14 is TRUE/HIGH
+        GPIO.output(14, 0)  # Set GPIO to FALSE/LOW
+except KeyboardInterrupt:          # trap a CTRL+C keyboard interrupt  
+    GPIO.cleanup()
