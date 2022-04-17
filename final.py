@@ -1,18 +1,13 @@
-import logging
 import time
 import RPi.GPIO as GPIO
 
 def relay_on():
+    print("RELAY LIGADO")
     GPIO.output(GPIO_CONTROL, False)
-
-    logging.basicConfig(format='%(asctime)s %(message)s', filename='/home/pi/GardenBrain/events.log', level=logging.INFO)
-    logging.info('Relay has been manually switched on, from functions.py')
-
 def relay_off():
+    print("RELAY DESLIGADO")
     GPIO.output(GPIO_CONTROL, True)
 
-    logging.basicConfig(format='%(asctime)s %(message)s', filename='/home/pi/GardenBrain/events.log', level=logging.INFO)
-    logging.info('Relay has been manually switched off, from functions.py')
 
 
 # The main program setup the GPIO
