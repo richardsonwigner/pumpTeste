@@ -36,12 +36,12 @@ try:
         GPIO.output(26, GPIO.HIGH)
         print('RELAY 2 OFF')
         time.sleep(2)
-        GPIO.OUT(18, GPIO.LOW)
-        GPIO.OUT(26, GPIO.LOW)
+        GPIO.output(18, GPIO.LOW)
+        GPIO.output(26, GPIO.LOW)
         print('RELAY 1 & 2 ON')
         time.sleep(3)
-        GPIO.OUT(18, GPIO.HIGH)
-        GPIO.OUT(26, GPIO.HIGH)
+        GPIO.output(18, GPIO.HIGH)
+        GPIO.output(26, GPIO.HIGH)
         print('RELAY 1 & 2 OFF')        
         
 finally:
