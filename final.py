@@ -11,7 +11,7 @@ GPIO.setup(26, GPIO.OUT)
 try:
     while True:
         GPIO.output(18, GPIO.HIGH)
-        print('Relay 1 ON')
-        
+        print('Relay 1 LIGADO')
+        time.sleep(1)
 finally:
     GPIO.cleanup()
