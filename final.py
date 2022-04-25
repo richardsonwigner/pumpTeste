@@ -43,6 +43,7 @@ try:
         GPIO.output(18, GPIO.HIGH)
         GPIO.output(26, GPIO.HIGH)
         print('RELAY 1 & 2 OFF')       
+        time.sleep(3)
         
 finally:
     GPIO.cleanup()
